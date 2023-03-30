@@ -1,6 +1,5 @@
 import json
 import pickle
-import math 
 
 from flask import Flask,request,app,jsonify,url_for,render_template
 import numpy as np
@@ -38,7 +37,6 @@ def predict():
     final_input=scalar.transform(np.array(data).reshape(1,-1))
     print(final_input)
     output=regmodel.predict(final_input)[0]
-    output = math.ceil(output) 
     return render_template("home.html",prediction_text="The House price prediction is {}$.".format(output))
 
 if __name__=="__main__":
